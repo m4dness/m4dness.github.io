@@ -1,0 +1,113 @@
+## A World Of Web
+
+You can use the [editor on GitHub](https://github.com/m4dness/m4dness.github.io/edit/main/index.md) to maintain and preview the content for your website in Markdown files.
+
+Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+
+<h3><p align="center">Server Side Template Injection</p></h3>
+<p align="center">
+כמה זה 7*7? 49?
+לא יודע איפה למדתם מתמטיקה, אבל זה ממש לא 49, בואו נתווכח על זה.
+
+בשביל להבין מדוע 7*7 לא שווה ל49, אתם צריכים להבין מה הרעיון מאחוריי template.
+
+אז מהם templates?
+
+templates הם פשוט "תבניות" שמכילות.. תוכן.
+אם יש שרת web, שרובו הוא אותו דבר אך יש חלק ממש קטן שמשתנה מבקשה לבקשה, אז יש סיכוי טוב שהוא משתמש בtemplates.
+בואו ניקח עמוד פרופיל של אחד המשתמשים שמציג רק את שם המשתמש, לדוגמא:
+
+User: John Doh
+
+וברגע שנרצה לראות פרופיל של משתמש אחר, רק שם המשתמש המוצג בדף משתנה. (החלק הצבוע בסגול):
+
+User: John Doh
+User: James Brown
+User: Roni King
+
+templates מוצגים כך:
+User: {user.name}
+
+ניתן לחלק templates לשני חלקים - סטטי ודינמי.
+באדום - החלק הסטטי (קבוע)
+בסגול - החלק הדינמי (משתנה)
+החלק הדינמי תמיד יהיה הערך היחידי שמשתנה ובתוך סוגריים מסולסלות.
+
+נקודה חשובה היא שלא כל הtemplates מוצגים כך:
+User: { user.name }
+
+אלא יכולים להיות מוצגים עם דאבל סוגריים מסולסלות:
+User: {{ user.name }}
+
+זו רק דוגמא למנוע templates שנקרא Jinja
+שעובד במסגרת פייתון.
+
+יש לא מעט סוגי מנועים לtemplates , והסינטקס שאיתו הדף מציג את המידע יכול להשתנות ממנוע למנוע.
+אבל הרעיון של templates נשאר זהה לכולם.
+
+Vulnerability
+Template injection
+
+כמו שהשם מרמז, מדובר בפגיעות שמנצלים בעזרת הזרקה, כאשר קלט המשתמש משתלב עם ההגדרה של הtemplate.
+לדוגמא:
+
+template = "Bio:" {{ user.bio }}
+
+בדוגמא הזו המידע מוצג כאשר המידע נמשך מהtemplate וזה בטוח לחלוטין,
+שכל מה שהוא עושה זה למשוך את המידע, להחזיר ולהציג אותו למשתמש.
+
+אבל בואו ניקח דוגמא נוספת:
+
+template = "Bio:" + USER_INPUT
+
+אם קלט המשתמש הופך לחלק בתוך ההגדרה של הtemplate, צריכה להידלק נורה אדומה.
+מהסיבה שלtemplate (או המנוע שעובד מאחורי הקלעים) יש אפשרות לבצע חישובים,הרצת פקודות ועוד, ולכן למשתמש יש אפשרות לבצע אופרציה פשוטה לווידוי הפגיעות כמו:
+
+Bio:": {{ 7*7 }}"
+
+וכתוצאה נקבל:
+
+Bio:": 49"
+
+או אפילו להריץ פקודות על העמדה הפגועה מרחוק:
+
+Bio:": {{ exec('ls') }}"
+
+נקודה חשובה נוספת היא שהפגיעות היא לא רק בצד שרת אלא בכל הצדדים שאתם מכירים, כל עוד יש שימוש בtemplates.
+מדובר בנושא ענק, שבאשכול אחד לא ניתן לסגור את כל הפינות, אך זה הבסיס לפגיעות.
+
+ותזכרו, אף פעם אל תסמכו על קוד בשילוב של קלט מהמשתמש, תתייחסו לקלט כלא בטוח, תמיד.
+
+ולבסוף, 7*7 , זה מה? נכון, זה Server Side Template Injections
+
+נשתמע 
+
+</p>
+
+```markdown
+Syntax highlighted code block
+
+# Header 1
+## Header 2
+### Header 3
+
+- Bulleted
+- List
+
+1. Numbered
+2. List
+
+**Bold** and _Italic_ and `Code` text
+
+[Link](url) and ![Image](src)
+```
+
+For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
+
+### Jekyll Themes
+
+Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/m4dness/m4dness.github.io/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+
+### Support or Contact
+
+Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
