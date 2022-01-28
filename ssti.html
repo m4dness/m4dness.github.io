@@ -42,48 +42,48 @@ body {
 </div>
 </div>
 <div style="text-align: right;"></div>
-<p>כמה זה 7*7? 49?</p>
-<p>לא יודע איפה למדתם מתמטיקה, אבל זה ממש לא 49, בואו נתווכח על זה.</p>
+<p style="text-align: right;">כמה זה 7*7? 49?</p>
+<p style="text-align: right;">לא יודע איפה למדתם מתמטיקה, אבל זה ממש לא 49, בואו נתווכח על זה.</p>
 <p style="text-align: right;">בשביל להבין מדוע 7*7 לא שווה ל49, אתם צריכים להבין מה הרעיון מאחוריי <span class="highlight">template</span>.</p>
-<p><u><strong><span style='font-size: 30px; font-family: "Arial Black", Gadget, sans-serif; color: rgb(85, 57, 130);'>אז מהם templates?</span><br></strong></u></p>
-<p>templates הם פשוט &quot;תבניות&quot; שמכילות.. תוכן .</p>
-<p>אם יש שרת web, שרובו הוא אותו דבר אך יש חלק ממש קטן שמשתנה מבקשה לבקשה, אז יש סיכוי טוב שהוא משתמש בtemplates.</p>
-<p>בואו ניקח עמוד פרופיל של אחד המשתמשים שמציג רק את שם המשתמש, לדוגמא:</p>
-<p><u><strong>User</strong></u>: <u><strong>John Doh</strong></u></p>
-<p>וברגע שנרצה לראות פרופיל של משתמש אחר, רק שם המשתמש המוצג בדף משתנה. (החלק הצבוע בסגול):</p>
-<p><u><strong><span style="color: rgb(226, 80, 65);">User</span></strong></u>: <u><strong><span style="color: rgb(85, 57, 130);">John Doh</span></strong></u></p>
-<p><u><strong><span style="color: rgb(226, 80, 65);">User</span></strong></u>: <u><strong><span style="color: rgb(85, 57, 130);">James Brown</span></strong></u></p>
-<p><u><strong><span style="color: rgb(226, 80, 65);">User</span></strong></u>: <u><strong><span style="color: rgb(85, 57, 130);">Roni King</span></strong></u></p>
-<p><u><strong>templates מוצגים כך:</strong></u></p>
-<p><u><strong>User</strong></u>: {<u><strong>user.name</strong></u>}</p>
-<p>ניתן לחלק templates לשני חלקים - סטטי ודינמי.</p>
-<p>באדום - החלק הסטטי (קבוע)</p>
-<p>בסגול - החלק הדינמי (משתנה)</p>
-<p>החלק הדינמי תמיד יהיה הערך היחידי שמשתנה ובתוך סוגריים מסולסלות.</p>
-<p><u><strong><br>&nbsp;נקודה חשובה היא שלא כל הtemplates מוצגים כך:</strong></u></p>
-<p><u><strong>User</strong></u>: {<u><strong>&nbsp;user.name&nbsp;</strong></u>}</p>
-<p><u><strong>אלא יכולים להיות מוצגים עם דאבל סוגריים מסולסלות:</strong></u></p>
-<p><u><strong>User</strong></u>: {{<u><strong>&nbsp;user.name&nbsp;</strong></u>}}</p>
-<p>זו רק דוגמא למנוע templates שנקרא Jinja</p>
-<p>שעובד במסגרת פייתון.</p>
-<p>יש לא מעט סוגי מנועים לtemplates , והסינטקס שאיתו הדף מציג את המידע יכול להשתנות ממנוע למנוע.</p>
-<p>אבל הרעיון של templates נשאר זהה לכולם.</p>
-<p><u><strong><span style='font-size: 30px; font-family: "Arial Black", Gadget, sans-serif; color: rgb(85, 57, 130);'>Vulnerability</span><br></strong></u><u><span class="highlight">Template</span> injection<br></u></p>
-<p>כמו שהשם מרמז, מדובר בפגיעות שמנצלים בעזרת הזרקה, כאשר קלט המשתמש משתלב עם ההגדרה של הtemplate.</p>
-<p><u><strong>לדוגמא:</strong></u></p>
-<p><u><strong><span class="highlight">template</span>&nbsp;</strong></u>= &quot;<u><strong>Bio</strong></u>:&quot; {{ <u><strong>user.bio</strong></u> }}</p>
-<p>בדוגמא הזו המידע מוצג כאשר המידע נמשך מהtemplate וזה בטוח לחלוטין,</p>
-<p>שכל מה שהוא עושה זה למשוך את המידע, להחזיר ולהציג אותו למשתמש.</p>
-<p><u><strong>&nbsp;אבל בואו ניקח דוגמא נוספת:</strong></u></p>
-<p><u><strong><span class="highlight">template</span></strong></u> = &quot;<u><strong>Bio</strong></u>:&quot; + <u><strong>USER_INPUT</strong></u></p>
-<p>אם קלט המשתמש הופך לחלק בתוך ההגדרה של הtemplate, צריכה להידלק נורה אדומה.</p>
-<p>מהסיבה שלtemplate (או המנוע שעובד מאחורי הקלעים) יש אפשרות לבצע חישובים,הרצת פקודות ועוד, ולכן למשתמש יש אפשרות לבצע אופרציה פשוטה לווידוי הפגיעות כמו:</p>
-<p><u><strong>Bio:</strong></u>&quot;: {{ <u><strong>7*7&nbsp;</strong></u>}}&quot;</p>
-<p><u>וכתוצאה נקבל:<br></u></p>
-<p><u><strong>Bio:</strong></u>&quot;: <u><strong>49</strong></u>&quot;</p>
-<p><u>או אפילו להריץ פקודות על העמדה הפגועה מרחוק:</u></p>
-<p><u><strong>Bio:</strong></u>&quot;: {{ <u><strong>exec(&apos;ls&apos;)&nbsp;</strong></u>}}&quot;</p>
-<p><u><strong>נקודה חשובה נוספת היא שהפגיעות היא לא רק בצד שרת אלא בכל הצדדים שאתם מכירים, כל עוד יש שימוש בtemplates.<br>&nbsp;מדובר בנושא ענק, שבאשכול אחד לא ניתן לסגור את כל הפינות, אך זה הבסיס לפגיעות.</strong></u><u><strong><br>&nbsp;ותזכרו, אף פעם אל תסמכו על קוד בשילוב של קלט מהמשתמש, תתייחסו לקלט כלא בטוח, תמיד.<br>&nbsp;<br></strong></u>ולבסוף, 7*7 , זה מה? נכון, זה <u><strong><span class="highlight">Server</span> <span class="highlight">Side</span> <span class="highlight">Template</span> Injections</strong></u>&nbsp;</p>
-<p>נשתמע!</p>
+<p style="text-align: right;"><u><strong><span style="font-size: 30px; font-family: 'Arial Black', Gadget, sans-serif; color: #553982;">אז מהם templates?</span><br /></strong></u></p>
+<p style="text-align: right;">templates הם פשוט "תבניות" שמכילות.. תוכן .</p>
+<p style="text-align: right;">אם יש שרת web, שרובו הוא אותו דבר אך יש חלק ממש קטן שמשתנה מבקשה לבקשה, אז יש סיכוי טוב שהוא משתמש בtemplates.</p>
+<p style="text-align: right;">בואו ניקח עמוד פרופיל של אחד המשתמשים שמציג רק את שם המשתמש, לדוגמא:</p>
+<p style="text-align: right;"><u><strong>User</strong></u>: <u><strong>John Doh</strong></u></p>
+<p style="text-align: right;">וברגע שנרצה לראות פרופיל של משתמש אחר, רק שם המשתמש המוצג בדף משתנה. (החלק הצבוע בסגול):</p>
+<p style="text-align: right;"><u><strong><span style="color: #e25041;">User</span></strong></u>: <u><strong><span style="color: #553982;">John Doh</span></strong></u></p>
+<p style="text-align: right;"><u><strong><span style="color: #e25041;">User</span></strong></u>: <u><strong><span style="color: #553982;">James Brown</span></strong></u></p>
+<p style="text-align: right;"><u><strong><span style="color: #e25041;">User</span></strong></u>: <u><strong><span style="color: #553982;">Roni King</span></strong></u></p>
+<p style="text-align: right;"><u><strong>templates מוצגים כך:</strong></u></p>
+<p style="text-align: right;"><u><strong>User</strong></u>: {<u><strong>user.name</strong></u>}</p>
+<p style="text-align: right;">ניתן לחלק templates לשני חלקים - סטטי ודינמי.</p>
+<p style="text-align: right;">באדום - החלק הסטטי (קבוע)</p>
+<p style="text-align: right;">בסגול - החלק הדינמי (משתנה)</p>
+<p style="text-align: right;">החלק הדינמי תמיד יהיה הערך היחידי שמשתנה ובתוך סוגריים מסולסלות.</p>
+<p style="text-align: right;"><u><strong><br />&nbsp;נקודה חשובה היא שלא כל הtemplates מוצגים כך:</strong></u></p>
+<p style="text-align: right;"><u><strong>User</strong></u>: {<u><strong>&nbsp;user.name&nbsp;</strong></u>}</p>
+<p style="text-align: right;"><u><strong>אלא יכולים להיות מוצגים עם דאבל סוגריים מסולסלות:</strong></u></p>
+<p style="text-align: right;"><u><strong>User</strong></u>: {{<u><strong>&nbsp;user.name&nbsp;</strong></u>}}</p>
+<p style="text-align: right;">זו רק דוגמא למנוע templates שנקרא Jinja</p>
+<p style="text-align: right;">שעובד במסגרת פייתון.</p>
+<p style="text-align: right;">יש לא מעט סוגי מנועים לtemplates , והסינטקס שאיתו הדף מציג את המידע יכול להשתנות ממנוע למנוע.</p>
+<p style="text-align: right;">אבל הרעיון של templates נשאר זהה לכולם.</p>
+<p style="text-align: right;"><u><strong><span style="font-size: 30px; font-family: 'Arial Black', Gadget, sans-serif; color: #553982;">Vulnerability</span><br /></strong></u><u><span class="highlight">Template</span> injection<br /></u></p>
+<p style="text-align: right;">כמו שהשם מרמז, מדובר בפגיעות שמנצלים בעזרת הזרקה, כאשר קלט המשתמש משתלב עם ההגדרה של הtemplate.</p>
+<p style="text-align: right;"><u><strong>לדוגמא:</strong></u></p>
+<p style="text-align: right;"><u><strong><span class="highlight">template</span>&nbsp;</strong></u>= "<u><strong>Bio</strong></u>:" {{ <u><strong>user.bio</strong></u> }}</p>
+<p style="text-align: right;">בדוגמא הזו המידע מוצג כאשר המידע נמשך מהtemplate וזה בטוח לחלוטין,</p>
+<p style="text-align: right;">שכל מה שהוא עושה זה למשוך את המידע, להחזיר ולהציג אותו למשתמש.</p>
+<p style="text-align: right;"><u><strong>&nbsp;אבל בואו ניקח דוגמא נוספת:</strong></u></p>
+<p style="text-align: right;"><u><strong><span class="highlight">template</span></strong></u> = "<u><strong>Bio</strong></u>:" + <u><strong>USER_INPUT</strong></u></p>
+<p style="text-align: right;">אם קלט המשתמש הופך לחלק בתוך ההגדרה של הtemplate, צריכה להידלק נורה אדומה.</p>
+<p style="text-align: right;">מהסיבה שלtemplate (או המנוע שעובד מאחורי הקלעים) יש אפשרות לבצע חישובים,הרצת פקודות ועוד, ולכן למשתמש יש אפשרות לבצע אופרציה פשוטה לווידוי הפגיעות כמו:</p>
+<p style="text-align: right;"><u><strong>Bio:</strong></u>": {{ <u><strong>7*7&nbsp;</strong></u>}}"</p>
+<p style="text-align: right;"><u>וכתוצאה נקבל:<br /></u></p>
+<p style="text-align: right;"><u><strong>Bio:</strong></u>": <u><strong>49</strong></u>"</p>
+<p style="text-align: right;"><u>או אפילו להריץ פקודות על העמדה הפגועה מרחוק:</u></p>
+<p style="text-align: right;"><u><strong>Bio:</strong></u>": {{ <u><strong>exec('ls')&nbsp;</strong></u>}}"</p>
+<p style="text-align: right;"><u><strong>נקודה חשובה נוספת היא שהפגיעות היא לא רק בצד שרת אלא בכל הצדדים שאתם מכירים, כל עוד יש שימוש בtemplates.<br />&nbsp;מדובר בנושא ענק, שבאשכול אחד לא ניתן לסגור את כל הפינות, אך זה הבסיס לפגיעות.</strong></u><u><strong><br />&nbsp;ותזכרו, אף פעם אל תסמכו על קוד בשילוב של קלט מהמשתמש, תתייחסו לקלט כלא בטוח, תמיד.<br />&nbsp;<br /></strong></u>ולבסוף, 7*7 , זה מה? נכון, זה <u><strong><span class="highlight">Server</span> <span class="highlight">Side</span> <span class="highlight">Template</span> Injections</strong></u>&nbsp;</p>
+<p style="text-align: right;">נשתמע!</p>
   </body>
 </html>
