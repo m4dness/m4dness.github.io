@@ -1,0 +1,57 @@
+<html dir="rtl" lang="ar">
+  <title>Web Security For Life</title>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color: #333;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #b300b3;
+  color: white;
+}
+</style>
+</head>
+<body>
+  <div class="topnav">
+  <a class="active" href="https://m4dness.github.io/ssti.html">SSTI</a>
+  <a href="https://m4dness.github.io/ssti.html/xxe.html">XXE</a>
+  <a href="#contact">Contact</a>
+  <a href="#about">About</a>
+</div>
+</div>
+<p style="text-align: center;"><b><u><span style="color: #800080;"><span style="font-size: 300%;"><span class="highlight">XML</span> External Entities (XXE)<br /></span></span></u></b><span style="color: #000000;"><span style="font-size: large;"><br /><span class="highlight">XML</span> הוא פשוט עובד,<br /><span class="highlight">XML</span> הוא תומך בכל פורמט..,<br /><span class="highlight">XML</span> הוא פשוט... נהדר,<br />או האם זה?<br /><br />בואו נצלול.</span><br /><br /></span><b><u><span style="color: #800080;"><span style="font-size: large;">מה זה <span class="highlight">XML</span>?<br /></span></span></u></b><span style="font-size: large;"><span style="color: #000000;"><span style="font-size: medium;"><span class="highlight">XML</span> הוא קיצור של </span></span><span style="color: #800080;"><span style="font-size: medium;"><u><b>Extensible Markup Language</b></u></span></span><span style="color: #000000;"><span style="font-size: medium;">.<br />בשונה מHTML בעוד הוא אחראי על הצגת הנתונים, <span class="highlight">XML</span> אחראי רוב הזמן על איחסון והעברת נתונים.<br /><span class="highlight">XML</span> הוא קריא ויש לו לא מעט שימושים כמו APIS , קבצי קונפיגורציה, RSS וכו'.<br /><br /><u><b>בואו נסתכל בדוגמא הבאה בשביל להבין מבנה בסיסי של מסמך <span class="highlight">XML</span>:</b></u><br /><br /></span></span></span></p>
+<div class="mainimg" style="display: inline-block; text-align: center;"><img data-src="https://i.imagesup.co/images2/82d2ad24981c82631198b3fbbeec6d98f869d039.png" alt="XML External Entities." class="lazy loaded" title="XML External Entities." data-ll-status="loaded" src="https://i.imagesup.co/images2/82d2ad24981c82631198b3fbbeec6d98f869d039.png" /></div>
+<p style="text-align: center;"><span style="font-size: large;"><span style="color: #000000;"><span style="font-size: medium;">&nbsp;</span></span></span></p>
+<div style="margin-right: 80px; text-align: center;"><u><b><span style="font-size: large;"><span style="color: #800080;"><br />Meta Data<br /></span></span></b></u><span style="font-size: large;"><span style="font-size: medium;"><span style="color: #000000;">השלד של המסמך, מכיל את הגרסא של מנתח הXML בשלב ההרצה,<br />מדובר בשורה אופציונלית עבור כל מנתח ומנתח.<br /></span></span></span><br /><u><b><span style="font-size: large;"><span style="color: #800080;">Root Element<br /></span></span></b></u><span style="font-size: large;">מסמכי <span class="highlight">XML</span> חייבים לשאת 1, ורק 1 root element.<br /><br /><span style="color: #800080;"><u><b>Children</b></u></span><br />התגים המקוננים בתוך הroot element אשר מכילים ערכים.<br />התגים איתם הערכים מוצגים רגישים לאותיות גדולות וקטנות, כלומר לא ניתן לקבוע ערך כך:<br /><br /></span>
+<div class="mainimg" style="display: inline-block;"><img data-src="https://i.imagesup.co/images2/9a5f852f52e4ff5b48a20278a1efddb67aa7c42c.png" alt="XML External Entities." class="lazy loaded" title="XML External Entities." data-ll-status="loaded" src="https://i.imagesup.co/images2/9a5f852f52e4ff5b48a20278a1efddb67aa7c42c.png" /></div>
+<span style="font-size: large;"><br /><br />זה חייב להסתיים בדיוק כמו שזה מתחיל, או שמנתח הXML לא יבצע את מה שהוא צריך לבצע.<br />לא ניתן להכיל סימנים מיוחדים כערך כמו:<br /><span style="color: #800080;"><u><b>&gt; &lt; ' "</b></u></span><br />מאחר והמנתח אינו יודע האם מדובר בערך או בתג.<br /><br /><span style="color: #800080;"><b><u><span style="font-size: 300%;">Entities<br /></span></u></b></span><span style="font-size: 300%;"><span style="font-size: large;"><span style="color: #000000;">תחשבו עליהם כעל משתנים עבור <span class="highlight">XML</span>, ניתן לכתוב ערך כלשהו על ידי קריאת המשתנה אליו הוא משוייך ולהשתמש במידע לפי הצרכים במהלך מסמך הXML.<br />Entities מוצג בחלק נפרד ממסמך הXML שנקרא </span><span style="color: #800080;"><u><b>Document Type Definition</b></u></span><span style="color: #000000;">, או בקיצור DTD.<br /><br /><u><b>בוא נעיף מבט בדוגמא הבאה על מנת להבין איך entities וDTD עובדים:</b></u><br /><br /></span></span></span></span>
+<div class="mainimg" style="display: inline-block;"><img data-src="https://i.imagesup.co/images2/bb454c21ab697f24ec24d31c079b7725fe4433c9.png" alt="XML External Entities." class="lazy loaded" title="XML External Entities." data-ll-status="loaded" src="https://i.imagesup.co/images2/bb454c21ab697f24ec24d31c079b7725fe4433c9.png" /></div>
+<span style="font-size: large;"><br /><br />Entities מיוצרים בתוך DOCTYPE מה שאומר למנתח הXML שזה DTD,<br />שבתוכו אנו מייצרים יחידת אחסון בשם <span style="color: #800080;"><u><b>name</b></u></span> עם הערך "<span style="color: #800080;"><u><b>Pwn</b></u></span>".<br />במקום לרשום "<u><span style="color: #800080;"><b>Pwn</b></span></u>" בין תגים בכל פעם שנרצה, קראנו לentity שנקרא <u><b><span style="color: #800080;">name</span></b></u> שיציג לנו את הערך <u><span style="color: #800080;"><b>Pwn</b></span></u>, זה חוסך המון זמן ברגע שנרצה להשתמש באותו ערך המון פעמים במסמך הXML שלנו.<br /><br />אבל <span class="highlight">XML</span> הוא בהרבה יותר מאחסון והעברת נתונים, יש לו המון פיצ'רים מסביב.<br />לEntities אין רק את היכולת <span style="color: #800080;"><b>לאחסן</b></span> מידע, אלא קיימת היכולת גם <b><span style="color: #800080;">למשוך</span></b> מידע,<br />המאפשרת לנו למשוך תוכן של קבצים לוקאליים, קבצים משרת חיצוני ועוד.<br /><br /><u><b><span style="color: #800080;">הפעם ננסה להבין איך External Entities עובד:</span><br /><br /></b></u></span>
+<div class="mainimg" style="display: inline-block;"><img data-src="https://i.imagesup.co/images2/544dc14310ab4fc69b67ad61d5d43825ac7e0199.png" alt="XML External Entities." class="lazy loaded" title="XML External Entities." data-ll-status="loaded" src="https://i.imagesup.co/images2/544dc14310ab4fc69b67ad61d5d43825ac7e0199.png" /></div>
+<span style="font-size: large;"><br /><br />בדוגמא הזו אנו רואים <span class="highlight">entity</span> בשם test שמשומש מטה בין תגי הpwn,<br />בטח שמתם לב שהסינטקס עבור הentity השתנה מהפעם הקודמת, יש מילת מפתח חדשה שנקראת <span style="color: #800080;"><u><b>SYSTEM</b></u></span>.<br /><br /><span style="color: #800080;"><u><b>ומה זה SYSTEM?<br /></b></u></span><br />ובכן, SYSTEM היא מילת מפתח שמבשרת למנתח הXML שהסוג של הentity הוא External.<br />במילים פשוטות, פשוט אומר למנתח ה-XML להביא את המשאב החיצוני ולאחסן אותו בתוך הentity.<br /><br />בחזרה לדוגמא,הערך של <span style="color: #800080;"><u><b>test</b></u></span> הוא אינו "<span style="color: #800080;"><u><b>secret.txt</b></u></span>", אלא התוכן שבתוך הקובץ שנקרא <br /><span style="font-size: large;">secret.txt מאוחסן על ידי המשתנה test, ובכן, secret.txt זה רק שם הקובץ שממנו אתם רוצים לקרוא.<br />שם הקובץ ממנו אתם רוצים לקרוא אינו חייב להיות מצויין כך, <span class="highlight">XML</span> תומך בפרוטוקולים מגוונים כמו ftp,http</span> וכו', שרק מגדיל את מרחב התקיפה.<br /><br /><u><b>הדוגמא הבאה תמשוך לנו את המידע שנמצא בתוך הקובץ "etc/passwd/":</b></u><br /><br /></span>
+<div class="mainimg" style="display: inline-block;"><img data-src="https://i.imagesup.co/images2/f6786138c2077f3941789cb34ea0676133ab8f30.png" alt="XML External Entities." class="lazy loaded" title="XML External Entities." data-ll-status="loaded" src="https://i.imagesup.co/images2/f6786138c2077f3941789cb34ea0676133ab8f30.png" /></div>
+<span style="font-size: large;"><br /><br /><span style="color: #800080;"><u><b>קיימים 3 סוגי מתקפות XXE:</b></u></span><br /><br /><span style="color: #800080;"><u><b>InBand</b></u></span> - כמו בדוגמא מעלה, ברגע שמנתח הXML יעבור עליו, המידע יימשך מתוך הקובץ והפלט יישפך לנו על המסך.<br /><br /><span style="color: #800080;"><u><b>Error </b></u></span>- סוג של Blind XXE , אין פלט חוץ מכמות של שגיאות שקופצות לכם מול הפרצוף.<br /><br /><span style="color: #800080;"><u><b> OutOfBand</b></u></span> - מדובר במתקפת BLIND XXE לחלוטין, ששום פלט לא קופץ ואתם צריכים למצוא דרך להגיע אל המידע אותו אתם רוצים למשוך.<br /><br /><u><b>כל מה שנאמר כאן זה רק הבסיס למתקפה, כמו כל נושא אחר ניתן לרדת לרמות נמוכות יותר ולהבין יותר לעומק (<a href="https://www.google.com/" rel="noopener ugc" target="_blank">https://www.google.com/</a>), אבל לפניכם מונח בסיס המתקפה.</b></u><br /><br />אז,<br /><span class="highlight">XML</span> הוא ישן...<br /><span class="highlight">XML</span> הוא מורכב... (נכון?)<br /><span class="highlight">XML</span> הוא... (תשלימו)<br />וXXE? זו רק ההתחלה </span></div>
+  </body>
+</html>
