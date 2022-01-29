@@ -1,48 +1,96 @@
+<!DOCTYPE html>
 <html dir="rtl" lang="ar">
-  <title>Web Security For Life</title>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
 body {
-  margin: 0;
   font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
 }
 
-.topnav {
+.navbar {
   overflow: hidden;
-  background-color: #333;
+  background-color: #333; 
 }
 
-.topnav a {
+.navbar a {
   float: left;
-  color: #f2f2f2;
+  font-size: 16px;
+  color: white;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
-  font-size: 17px;
 }
 
-.topnav a:hover {
-  background-color: #ddd;
+.subnav {
+  float: left;
+  overflow: hidden;
+}
+
+.subnav .subnavbtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  padding: 14px 16px;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+}
+
+.navbar a:hover, .subnav:hover .subnavbtn {
+  background-color: purple;
+}
+
+.subnav-content {
+  display: none;
+  position: absolute;
+  left: 0;
+  background-color: purple;
+  width: 100%;
+  z-index: 1;
+}
+
+.subnav-content a {
+  float: left;
+  color: white;
+  text-decoration: none;
+}
+
+.subnav-content a:hover {
+  background-color: #eee;
   color: black;
 }
 
-.topnav a.active {
-  background-color: #b300b3;
-  color: white;
+.subnav:hover .subnav-content {
+  display: block;
 }
 </style>
 </head>
 <body>
-  <div class="topnav">
-  <a class="active" href="https://m4dness.github.io/index.html">General</a>
-  <a href="https://m4dness.github.io/ssti.html">Server Side Template Injection</a>
-  <a href="https://m4dness.github.io/xxe.html">XML External Entities</a>
-  <a href="https://m4dness.github.io/lfi.html">Local File Inclusion</a>
-  <a href="Empty">Empty</a>
-  <a href="Empty">Empty</a>
-  <a href="Empty">Empty</a>
+
+<div class="navbar">
+  <a href="https://m4dness.github.io/index.html">General</a>
+  <div class="subnav">
+    <button class="subnavbtn">Basic Web Attacks <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="https://m4dness.github.io/lfi.html">Local File Inclusion</a>
+      <a href="Empty">Empty</a>
+      <a href="Empty">Empty</a>
+    </div>
+  </div> 
+  <div class="subnav">
+    <button class="subnavbtn">Advanced Web Attacks <i class="fa fa-caret-down"></i></button>
+    <div class="subnav-content">
+      <a href="https://m4dness.github.io/xxe.html">XML External Entities</a>
+      <a href="https://m4dness.github.io/ssti.html">Server Side Template Injection</a>
+      <a href="Empty">Empty</a>
+      <a href="Empty">Empty</a>
+    </div>
+  </div> 
+  <a href="#contact">Contact</a>
 </div>
-  <p style="text-align: center;"><span style="font-size: x-large;"><strong><span style="color: #800080;">Welcome to a world of m4dness, Where the real magic is happening<br />ברוכים הבאים,<br /><br /></span></strong><span style="color: #000000;"><span style="font-size: medium;">אתר זה נבנה על מנת לתת הסבר מעמיק על מתקפות Web כאלו ואחרות, בהמשך יתווספו גם הדרכים להימנע מכל מתקפה ומתקפה,<br />נווטו בין המתקפות באמצעות סרגל הכלים שנמצא למעלה ותתחילו עם השיגעון הסוחף שהולך פה.<br /><br /><strong>הגיע הזמן לקפוץ למים העמוקים, בהצלחה.</strong></span></span></span></p>
-  </body>
+  <script language=javascript>document.write(unescape('%3C%73%63%72%69%70%74%20%6C%61%6E%67%75%61%67%65%3D%22%6A%61%76%61%73%63%72%69%70%74%22%3E%66%75%6E%63%74%69%6F%6E%20%64%46%28%73%29%7B%76%61%72%20%73%31%3D%75%6E%65%73%63%61%70%65%28%73%2E%73%75%62%73%74%72%28%30%2C%73%2E%6C%65%6E%67%74%68%2D%31%29%29%3B%20%76%61%72%20%74%3D%27%27%3B%66%6F%72%28%69%3D%30%3B%69%3C%73%31%2E%6C%65%6E%67%74%68%3B%69%2B%2B%29%74%2B%3D%53%74%72%69%6E%67%2E%66%72%6F%6D%43%68%61%72%43%6F%64%65%28%73%31%2E%63%68%61%72%43%6F%64%65%41%74%28%69%29%2D%73%2E%73%75%62%73%74%72%28%73%2E%6C%65%6E%67%74%68%2D%31%2C%31%29%29%3B%64%6F%63%75%6D%65%6E%74%2E%77%72%69%74%65%28%75%6E%65%73%63%61%70%65%28%74%29%29%3B%7D%3C%2F%73%63%72%69%70%74%3E'));dF('%264Dq%2631tuzmf%264E%2633ufyu.bmjho%264B%2631dfoufs%264C%2633%264F%264Dtqbo%2631tuzmf%264E%2633gpou.tj%7Bf%264B%2631y.mbshf%264C%2633%264F%264Dtuspoh%264F%264Dtqbo%2631tuzmf%264E%2633dpmps%264B%2631%2634911191%264C%2633%264FXfmdpnf%2631up%2631b%2631xpsme%2631pg%2631n5eoftt%263D%2631Xifsf%2631uif%2631sfbm%2631nbhjd%2631jt%2631ibqqfojoh%264Dcs%264F%26v16E2%26v16F9%26v16E6%26v16EC%26v16E%3A%26v16EE%2631%26v16E5%26v16E2%26v16E1%26v16E%3A%26v16EE%263D%264Dcs%264F%264Dcs%264F%264D0tqbo%264F%264D0tuspoh%264F%264Dtqbo%2631tuzmf%264E%2633dpmps%264B%2631%2634111111%264C%2633%264F%264Dtqbo%2631tuzmf%264E%2633gpou.tj%7Bf%264B%2631nfejvn%264C%2633%264F%26v16E1%26v16FB%26v16F9%2631%26v16E7%26v16E5%2631%26v16F1%26v16E2%26v16F1%26v16E5%2631%26v16F3%26v16ED%2631%26v16EF%26v16F1%26v16FB%2631%26v16ED%26v16FB%26v16FB%2631%26v16E5%26v16F2%26v16E2%26v16F9%2631%26v16EF%26v16F3%26v16EF%26v16E%3A%26v16F8%2631%26v16F3%26v16ED%2631%26v16EF%26v16FB%26v16F8%26v16F5%26v16E6%26v16FB%2631Xfc%2631%26v16EC%26v16E1%26v16ED%26v16E6%2631%26v16E6%26v16E1%26v16E8%26v16F9%26v16E6%26v16FB%263D%2631%26v16E2%26v16E5%26v16EF%26v16F%3A%26v16EB%2631%26v16E%3A%26v16FB%26v16E6%26v16E6%26v16F2%26v16F5%26v16E6%2631%26v16E3%26v16EE%2631%26v16E5%26v16E4%26v16F9%26v16EC%26v16E%3A%26v16EE%2631%26v16ED%26v16E5%26v16E%3A%26v16EF%26v16F1%26v16F3%2631%26v16EF%26v16EC%26v16ED%2631%26v16EF%26v16FB%26v16F8%26v16F5%26v16E5%2631%26v16E6%26v16EF%26v16FB%26v16F8%26v16F5%26v16E5%263D%264Dcs%264F%26v16F1%26v16E6%26v16E6%26v16E9%26v16E6%2631%26v16E2%26v16E%3A%26v16EG%2631%26v16E5%26v16EF%26v16FB%26v16F8%26v16F5%26v16E6%26v16FB%2631%26v16E2%26v16E1%26v16EF%26v16F7%26v16F3%26v16E6%26v16FB%2631%26v16F2%26v16F9%26v16E3%26v16ED%2631%26v16E5%26v16EC%26v16ED%26v16E%3A%26v16EE%2631%26v16F%3A%26v16F1%26v16EF%26v16F7%26v16E1%2631%26v16ED%26v16EF%26v16F3%26v16ED%26v16E5%2631%26v16E6%26v16FB%26v16FB%26v16E8%26v16E%3A%26v16ED%26v16E6%2631%26v16F3%26v16EE%2631%26v16E5%26v16F%3A%26v16E%3A%26v16E3%26v16F3%26v16E6%26v16EG%2631%26v16E5%26v16F2%26v16E6%26v16E8%26v16F4%2631%26v16F%3A%26v16E5%26v16E6%26v16ED%26v16EB%2631%26v16F5%26v16E5/%264Dcs%264F%264Dcs%264F%264Dtuspoh%264F%26v16E5%26v16E3%26v16E%3A%26v16F3%2631%26v16E5%26v16E7%26v16EF%26v16EG%2631%26v16ED%26v16F8%26v16F5%26v16E6%26v16F6%2631%26v16ED%26v16EF%26v16E%3A%26v16EE%2631%26v16E5%26v16F3%26v16EF%26v16E6%26v16F8%26v16E%3A%26v16EE%263D%2631%26v16E2%26v16E5%26v16F7%26v16ED%26v16E8%26v16E5/%264D0tuspoh%264F%264D0tqbo%264F%264D0tqbo%264F%264D0tqbo%264F%264D0q%264F1')</script>
+</body>
 </html>
