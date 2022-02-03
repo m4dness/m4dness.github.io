@@ -108,7 +108,7 @@ p {
 <p><center> בוא נמשיך.</center></p><br>
 <p><center>ראו את הקוד הבא:</center></p><br>
 <p><center style="color: rgb(209, 11, 77);"></center></p>
-<center><img src="https://m4dness.github.io/lfi.png"></center><br>
+<center><img src="https://m4dness.github.io/images/lfi.png"></center><br>
 <p><center>יצרנו פרמטר בשם file שמקבל את קלט המשתמש בבקשת GET, לאחר ששלחנו את קלט המשתמש,</center></p>
 <p><center> הקלט ייכנס לתוך פונקציית הinclude והפונקציה תכליל את תוכן הקובץ בדפדפן האינטרנט, כתובת הURL של האתר נראה כך:</center></p><br>
 <p><center style="color: rgb(209, 11, 77);">http://127.0.0.1/lfi.php?file=index.html</center></p><br>
@@ -117,7 +117,7 @@ p {
 <p><center>אז נשנה את הבקשה שתיראה כך:</center></p><br>
 <p><center style="color: rgb(209, 11, 77);">http://127.0.0.1/lfi.php?file=../../../../../etc/passwd</center></p><br>
 <p><center>ובאנג, יש לנו את התוכן של קובץ הpasswd כלול בתוך דפדפן האינטרנט:</center></p><br>
-<center><img src="https://m4dness.github.io/passwd.png" width="500"></center><br>
+<center><img src="https://m4dness.github.io/images/passwd.png" width="500"></center><br>
 <h2 style="color: rgb(209, 11, 77);"><center><u>אבל רגע! היה דיבור על RCE מקודם לא?</u></center></style></h2>
 <p><center>אתם צודקים לאללה, ניראלכם ששכחתי? אני חי בשביל השיט הזה.</center></p>
 <p><center>אז כן, LFI יכול להוביל לRCE באמצעות פנייה לקובץ שבמידה והוא מכיל פרמטר שיכול להריץ פקודת system כזו או אחרת,</center></p>
@@ -128,9 +128,9 @@ p {
 <p><center>(הקושי הוא להבין לאיפה הקובץ שהעלתם עלה, כלומר באיזה תיקייה ואם בכלל קיימות ההרשאות לגשת ולהריץ מאותה נקודה).</center></p>
 <p><center>קחו דוגמא:</center></p><br>
 <p><center>הצלחתם לעלות לשרת php backdoor שייראה כך:</center></p>
-<center><img src="https://m4dness.github.io/phpcommand.png"></center><br>
+<center><img src="https://m4dness.github.io/images/phpcommand.png"></center><br>
 <p><center>מה שעשינו כאן הוא שימוש בפונקציית סיסטם, שמאפשרת הרצת פקודות מערכת,</center></p>
 <p><center>שמקבלת פרמטר בשם command,אז ניגש לקובץ ונעניק לו את הפרמטר:</center></p>
-<center><img src="https://m4dness.github.io/rceresponse.png"></center><br>
+<center><img src="https://m4dness.github.io/images/rceresponse.png"></center><br>
 <p><center>ובאנג, יש לנו RCE על השרת המרוחק, מכאן הזמן קצר מאוד לshell אינטראקטיבי על השרת.</center></p><br>
 </html>
