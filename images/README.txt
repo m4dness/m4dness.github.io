@@ -1,1 +1,1 @@
-Just a folder for a whole bunch of iamges.
+Just a folder for a whole bunch of images.
