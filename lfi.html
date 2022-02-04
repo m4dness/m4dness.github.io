@@ -13,6 +13,10 @@ p {
     display: inline;
 }
 
+body {
+background-color: #aaaaaa;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #333; 
@@ -95,30 +99,30 @@ p {
   </div> 
   <a href="#contact">Contact</a>
 </div>
-<div style="color: rgb(209, 11, 77);"><h1><center><u>Local File Inclusion</u></center></h1></div>
+<div style="color: rgb(82, 26, 60);"><h1><center><u>Local File Inclusion</u></center></h1></div>
 <p><center> What the heck is that?</center></p><br>
 <p><center> Local File Inclusion או בקיצור LFI זו מתקפת web שמאפשרת לנו כתוקפים לבצע מניפולציה על פרמטר שאינו מאובטח ולהיחשף לקבצי שרת דרך אותו פרמטר.</center></p>
 <p><center>נקודה חשובה בLFI היא שדרכו יש לנו את הדרך גם לRemote Code Execution, בשונה מDirectory Traversal שזו מתקפה שאיתה אנו אך ורק נחשפים לתוכן הקבצים ללא RCE.</center></p><br>
 <p><center>LFI קורה כאשר בקוד צד שרת משתמשים בפונקציית include או require בצורה לא נכונה ומאובטחת,</center></p>
 <p><center> כאשר אותה פונקציה מקבלת פרמטר שלא עובר שום ולידציה (או בדיקה בצד השרת) בדרך ובעצם מאפשר לנו לנוע בין תיקיות במערכת ההפעלה</center></p>
 <p><center> של הקורבן ולהיחשף לתוכן של קבצים קריטיים, הדוגמא הכי קלאסית זה הקובץ "/etc/passwd" במערכת ההפעלה לינוקס.</center></p>
-<h2 style="color: rgb(209, 11, 77);"><center><u>אז למה בעצם מתכנתים צריכים להשתמש בפונקציה הזאת?</u></center></style></h2>
+<h2 style="color: rgb(82, 26, 60);"><center><u>אז למה בעצם מתכנתים צריכים להשתמש בפונקציה הזאת?</u></center></style></h2>
 <p><center>תחשבו על זה, יש לנו אפשרות להכליל תוכן שלם של קובץ אחד באמצעות one liner פשוט במיוחד, ברגע שזה נעשה,</center></p>
 <p><center> הקובץ שבו הפונקציה ממומשת מושך את כל תוכן הקובץ שהמתכנת צריך להכליל מסיבות כאלו ואחרות, מה שמאוד מקל על תהליך הפיתוח,</center></p>
 <p><center> בוא נמשיך.</center></p><br>
 <p><center>ראו את הקוד הבא:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);"></center></p>
-<center><img src="https://m4dness.github.io/images/lfi.png"></center><br>
+<p><center style="color: rgb(82, 26, 60);"></center></p>
+<center><img src="https://m4dness.github.io/images/lfi.png" width="300"></center><br>
 <p><center>יצרנו פרמטר בשם file שמקבל את קלט המשתמש בבקשת GET, לאחר ששלחנו את קלט המשתמש,</center></p>
 <p><center> הקלט ייכנס לתוך פונקציית הinclude והפונקציה תכליל את תוכן הקובץ בדפדפן האינטרנט, כתובת הURL של האתר נראה כך:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">http://127.0.0.1/lfi.php?file=index.html</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">http://127.0.0.1/lfi.php?file=index.html</center></p><br>
 <p><center>נראה שהפרמטר מושך את תוכן הקובץ מindex.html ומציג אותו למשתמש, אם אותו פרמטר בשליטתנו,</center></p>
 <p><center>מה אתם אומרים שנשנה את שם הקובץ לקובץ אחר? (ירד לכם האסימון?)</center></p>
 <p><center>אז נשנה את הבקשה שתיראה כך:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">http://127.0.0.1/lfi.php?file=../../../../../etc/passwd</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">http://127.0.0.1/lfi.php?file=../../../../../etc/passwd</center></p><br>
 <p><center>ובאנג, יש לנו את התוכן של קובץ הpasswd כלול בתוך דפדפן האינטרנט:</center></p><br>
-<center><img src="https://m4dness.github.io/images/passwd.png" width="500"></center><br>
-<h2 style="color: rgb(209, 11, 77);"><center><u>אבל רגע! היה דיבור על RCE מקודם לא?</u></center></style></h2>
+<center><img src="https://m4dness.github.io/images/passwd.png" width="400"></center><br>
+<h2 style="color: rgb(82, 26, 60);"><center><u>אבל רגע! היה דיבור על RCE מקודם לא?</u></center></style></h2>
 <p><center>אתם צודקים לאללה, ניראלכם ששכחתי? אני חי בשביל השיט הזה.</center></p>
 <p><center>אז כן, LFI יכול להוביל לRCE באמצעות פנייה לקובץ שבמידה והוא מכיל פרמטר שיכול להריץ פקודת system כזו או אחרת,</center></p>
 <p><center> אז תהיה לנו אפשרות הרצת קוד מרחוק, מהסיבה שפונקציית הinclude או הrequire מבצעות קוד php, או בעצם מריצות אותו,</center></p>
@@ -127,10 +131,10 @@ p {
 <p><center> תהיה לנו האפשרות להגיע לקובץ באמצעות LFI ובעצם להריץ קוד מרחוק על השרת כאשר נספק לו את הפרמטר של פקודת הsystem.</center></p>
 <p><center>(הקושי הוא להבין לאיפה הקובץ שהעלתם עלה, כלומר באיזה תיקייה ואם בכלל קיימות ההרשאות לגשת ולהריץ מאותה נקודה).</center></p>
 <p><center>קחו דוגמא:</center></p><br>
-<p><center>הצלחתם לעלות לשרת php backdoor שייראה כך:</center></p>
-<center><img src="https://m4dness.github.io/images/phpcommand.png"></center><br>
+<p><center>הצלחתם לעלות לשרת php backdoor שייראה כך:</center></p><br>
+<center><img src="https://m4dness.github.io/images/phpcommand.png" width="300"></center><br>
 <p><center>מה שעשינו כאן הוא שימוש בפונקציית סיסטם, שמאפשרת הרצת פקודות מערכת,</center></p>
-<p><center>שמקבלת פרמטר בשם command,אז ניגש לקובץ ונעניק לו את הפרמטר:</center></p>
-<center><img src="https://m4dness.github.io/images/rceresponse.png"></center><br>
+<p><center>שמקבלת פרמטר בשם command,אז ניגש לקובץ ונעניק לו את הפרמטר:</center></p><br>
+<center><img src="https://m4dness.github.io/images/rceresponse.png" width="450"></center><br>
 <p><center>ובאנג, יש לנו RCE על השרת המרוחק, מכאן הזמן קצר מאוד לshell אינטראקטיבי על השרת.</center></p><br>
 </html>
