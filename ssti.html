@@ -13,6 +13,10 @@ p {
     display: inline;
 }
 
+body {
+background-color: #aaaaaa;
+}
+
 .navbar {
   overflow: hidden;
   background-color: #333; 
@@ -95,52 +99,52 @@ p {
   </div> 
   <a href="#contact">Contact</a>
 </div>
-<div style="color: rgb(209, 11, 77);"><h1><center><u>Server Side Template Injection</u></center></h1></div>
+<div style="color: rgb(82, 26, 60);"><h1><center><u>Server Side Template Injection</u></center></h1></div>
 <p><center>כמה זה 7*7? 49?</center></p><br>
 <p><center>לא יודע איפה למדתם מתמטיקה, אבל זה ממש לא 49, בואו נתווכח על זה.</center></p>
 <p><center>בשביל להבין מדוע 7*7 לא שווה ל49, אתם צריכים להבין מה הרעיון מאחוריי template.</center></p>
-<h2 style="color: rgb(209, 11, 77);"><center><u>אז מהם templates?</u></center></style></h2>
+<h2 style="color: rgb(82, 26, 60);"><center><u>אז מהם templates?</u></center></style></h2>
 <p><center>templates הם פשוט "תבניות" שמכילות.. תוכן.</center></p>
 <p><center> אם יש שרת web, שרובו הוא אותו דבר אך יש חלק ממש קטן שמשתנה מבקשה לבקשה, אז יש סיכוי טוב שהוא משתמש בtemplates.</center></p>
 <p><center>בואו ניקח עמוד פרופיל של אחד המשתמשים שמציג רק את שם המשתמש, לדוגמא:</center></p><br>
 <p><center></center></p>
-<p><center style="color: rgb(209, 11, 77);">User: John Doh</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">User: John Doh</center></p><br>
 <p><center> וברגע שנרצה לראות פרופיל של משתמש אחר, רק שם המשתמש המוצג בדף משתנה. (החלק של שם המשתמש בלבד):</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">User: James Brown</center></p>
-<p><center style="color: rgb(209, 11, 77);">User: Roni King</center></p>
-<h2 style="color: rgb(209, 11, 77);"><center><u> templates מוצגים כך:</u></center></style></h2>
-<p><center style="color: rgb(209, 11, 77);">User: {user.name}</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">User: James Brown</center></p>
+<p><center style="color: rgb(82, 26, 60);">User: Roni King</center></p>
+<h2 style="color: rgb(82, 26, 60);"><center><u> templates מוצגים כך:</u></center></style></h2>
+<p><center style="color: rgb(82, 26, 60);">User: {user.name}</center></p><br>
 <p><center>User - החלק הסטטי (קבוע)</center></p>
 <p><center>user.name - החלק הדינמי (משתנה)</center></p><br>
 <p><center>החלק הדינמי תמיד יהיה הערך היחידי שמשתנה ובתוך סוגריים מסולסלות.</center></p><br>
 <p><center> נקודה חשובה היא שלא כל הtemplates מוצגים כך:</center></p>
-<p><center style="color: rgb(209, 11, 77);">User: { user.name }</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">User: { user.name }</center></p><br>
 <p><center>אלא יכולים להיות מוצגים עם דאבל סוגריים מסולסלות:</center></p>
-<p><center style="color: rgb(209, 11, 77);">User: {{ user.name }}</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">User: {{ user.name }}</center></p><br>
 <p><center> זו רק דוגמא למנוע templates שנקרא Jinja שעובד במסגרת פייטון.</center></p><br>
 <p><center> יש לא מעט סוגי מנועים לtemplates , והסינטקס שאיתו הדף מציג את המידע יכול להשתנות ממנוע למנוע.</center></p>
 <p><center> אבל הרעיון של templates נשאר זהה לכולם.</center></p>
-<h1><center style="color: rgb(209, 11, 77);"><u>Vulnerability</u></center></h1>
+<h1><center style="color: rgb(82, 26, 60);"><u>Vulnerability</u></center></h1>
 <p><center>Template injection</center></p><br>
 <p><center> כמו שהשם מרמז, מדובר בפגיעות שמנצלים בעזרת הזרקה, כאשר קלט המשתמש משתלב עם ההגדרה של הtemplate.</center></p>
 <p><center> לדוגמא:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">template = "Bio:" {{ user.bio }}</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">template = "Bio:" {{ user.bio }}</center></p><br>
 <p><center> בדוגמא הזו המידע מוצג כאשר המידע נמשך מהtemplate וזה בטוח לחלוטין,</center></p>
 <p><center> שכל מה שהוא עושה זה למשוך את המידע, להחזיר ולהציג אותו למשתמש.</center></p>
 <p><center>אבל בואו ניקח דוגמא נוספת:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">template = "Bio:" + USER_INPUT</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">template = "Bio:" + USER_INPUT</center></p><br>
 <p><center>אם קלט המשתמש הופך לחלק בתוך ההגדרה של הtemplate, צריכה להידלק נורה אדומה.</center></p>
 <p><center>מהסיבה שלtemplate (או המנוע שעובד מאחורי הקלעים) יש אפשרות לבצע חישובים,הרצת פקודות ועוד.</center></p>
 <p><center>לכן למשתמש יש אפשרות לבצע אופרציה פשוטה לווידוי הפגיעות כמו:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">Bio:": {{ 7*7 }}"</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">Bio:": {{ 7*7 }}"</center></p><br>
 <p><center> וכתוצאה נקבל:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">Bio:": 49"</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">Bio:": 49"</center></p><br>
 <p><center> או אפילו להריץ פקודות על העמדה הפגועה מרחוק:</center></p><br>
-<p><center style="color: rgb(209, 11, 77);">Bio:": {{ exec('ls') }}"</center></p><br>
+<p><center style="color: rgb(82, 26, 60);">Bio:": {{ exec('ls') }}"</center></p><br>
 <p><center> נקודה חשובה נוספת היא שהפגיעות היא לא רק בצד שרת אלא בכל הצדדים שאתם מכירים, כל עוד יש שימוש בtemplates.</center></p>
 <p><center> מדובר בנושא ענק, שבאשכול אחד לא ניתן לסגור את כל הפינות, אך זה הבסיס לפגיעות.</center></p><br>
 <p><center> ותזכרו, אף פעם אל תסמכו על קוד בשילוב של קלט מהמשתמש, תתייחסו לקלט כלא בטוח, תמיד.</center></p>
-<h2><center style="color: rgb(209, 11, 77);">ולבסוף, 7*7 , זה מה? נכון, זה Server Side Template Injections </center></h2>
+<h2><center style="color: rgb(82, 26, 60);">ולבסוף, 7*7 , זה מה? נכון, זה Server Side Template Injections </center></h2>
 <p><center>הרצאה מומלצת:</center></p>
 <p><center>https://www.youtube.com/watch?v=3cT0uE7Y87s&t=1s</center></p><br><br>
 </html>
