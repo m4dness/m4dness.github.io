@@ -18,6 +18,10 @@ p {
   background-color: #333; 
 }
 
+body {
+background-color: #aaaaaa;
+}
+
 .navbar a {
   float: left;
   font-size: 16px;
@@ -95,32 +99,32 @@ p {
   </div> 
   <a href="#contact">Contact</a>
 </div>
-<div style="color: rgb(209, 11, 77);"><h1><center><u>XML External Entity</u></center></h1></div>
+<div style="color: rgb(82, 26, 60);"><h1><center><u>XML External Entity</u></center></h1></div>
 <p><center>XML הוא פשוט עובד,</center></p>
 <p><center>XML הוא תומך בכל פורמט..,</center></p>
 <p><center>XML הוא פשוט... נהדר,</center></p>
 <p><center>או האם זה?</center></p><br>
 <p><center>בואו נצלול.</center></p>
-<h2 style="color: rgb(209, 11, 77);"><center><u>מה זה XML?</u></center></style></h2>
+<h2 style="color: rgb(82, 26, 60);"><center><u>מה זה XML?</u></center></style></h2>
 <p><center>XML הוא קיצור של Extensible Markup Language.</center></p>
 <p><center>בשונה מHTML בעוד הוא אחראי על הצגת הנתונים, XML אחראי רוב הזמן על איחסון והעברת נתונים.</center></p>
 <p><center>XML הוא קריא ויש לו לא מעט שימושים כמו APIS , קבצי קונפיגורציה, RSS וכו'.</center></p>
-<h2 style="color: rgb(209, 11, 77);"><center><u>בואו נסתכל בדוגמא הבאה בשביל להבין מבנה בסיסי של מסמך XML:</u></center></style></h2><br>
+<h2 style="color: rgb(82, 26, 60);"><center><u>בואו נסתכל בדוגמא הבאה בשביל להבין מבנה בסיסי של מסמך XML:</u></center></style></h2><br>
 <center><img src="https://m4dness.github.io/images/xxe1.png" width="500"></center><br>
-<h3 style="color: rgb(209, 11, 77);"><center><u>Meta Data</u></center></style></h3>
+<h3 style="color: rgb(82, 26, 60)"><center><u>Meta Data</u></center></style></h3>
 <p><center>Meta Dataהשלד של המסמך, מכיל את הגרסא של מנתח הXML בשלב ההרצה,</center></p>
 <p><center>מדובר בשורה אופציונלית עבור כל מנתח ומנתח.</center></p>
-<h3 style="color: rgb(209, 11, 77);"><center><u>Root Element</u></center></style></h3>
+<h3 style="color: rgb(82, 26, 60);"><center><u>Root Element</u></center></style></h3>
 <p><center>מסמכי XML חייבים לשאת 1, ורק 1 Root Element.</center></p>
-<h3 style="color: rgb(209, 11, 77);"><center><u>Children</u></center></style></h3>
+<h3 style="color: rgb(82, 26, 60);"><center><u>Children</u></center></style></h3>
 <p><center>התגים המקוננים בתוך הroot element אשר מכילים ערכים.</center></p>
 <p><center>התגים איתם הערכים מוצגים רגישים לאותיות גדולות וקטנות, כלומר לא ניתן לקבוע ערך כך:</center></p><br>
 <center><img src="https://m4dness.github.io/images/xxe2.png" width="300"></center><br>
 <p><center>זה חייב להסתיים בדיוק כמו שזה מתחיל, או שמנתח הXML לא יבצע את מה שהוא צריך לבצע.</center></p>
 <p><center>לא ניתן להכיל סימנים מיוחדים כערך כמו:</center></p>
-<p><center style="color: rgb(209, 11, 77);">> < ' "</center></p>
+<p><center style="color: rgb(82, 26, 60);">> < ' "</center></p>
 <p><center>מאחר והמנתח אינו יודע האם מדובר בערך או בתג.</center></p>
-<h1 style="color: rgb(209, 11, 77);"><center><u>Entities</u></center></style></h1>
+<h1 style="color: rgb(82, 26, 60);"><center><u>Entities</u></center></style></h1>
 <p><center>תחשבו עליהם כעל משתנים עבור XML, ניתן לכתוב ערך כלשהו על ידי קריאת המשתנה אליו הוא משוייך ולהשתמש במידע לפי הצרכים במהלך מסמך הXML.</center></p>
 <p><center>Entities מוצג בחלק נפרד ממסמך הXML שנקרא Document Type Definition, או בקיצור DTD.</center></p><br>
 <p><center>בוא נעיף מבט בדוגמא הבאה על מנת להבין איך entities וDTD עובדים:</center></p><br>
@@ -130,20 +134,20 @@ p {
 <p><center>במקום לרשום "Pwn" בין תגים בכל פעם שנרצה, קראנו לentity שנקרא name שיציג לנו את הערך Pwn,</center></p>
 <p><center>זה חוסך המון זמן ברגע שנרצה להשתמש באותו ערך המון פעמים במסמך הXML שלנו.</center></p><br>
 <p><center>אבל XML הוא בהרבה יותר מאחסון והעברת נתונים, יש לו המון פיצ'רים מסביב.</center></p>
-<p><center style="color: rgb(209, 11, 77);">לEntities אין רק את היכולת לאחסן מידע, אלא קיימת היכולת גם למשוך מידע,</center></p>
+<p><center style="color: rgb(82, 26, 60);">לEntities אין רק את היכולת לאחסן מידע, אלא קיימת היכולת גם למשוך מידע,</center></p>
 <p><center>המאפשרת לנו למשוך תוכן של קבצים לוקאליים, קבצים משרת חיצוני ועוד.</center></p><br>
 <p><center>הפעם ננסה להבין איך External Entities עובד:</center></p>
 <center><img src="https://m4dness.github.io/images/xxe4.png" width="500"></center><br>
 <p><center>בדוגמא הזו אנו רואים entity בשם test שמשומש מטה בין תגי הpwn,</center></p>
 <p><center>בטח שמתם לב שהסינטקס עבור הentity השתנה מהפעם הקודמת, יש מילת מפתח חדשה שנקראת SYSTEM.</center></p>
-<h3 style="color: rgb(209, 11, 77);"><center><u>ומה זה SYSTEM?</u></center></style></h3>
+<h3 style="color: rgb(82, 26, 60);"><center><u>ומה זה SYSTEM?</u></center></style></h3>
 <p><center>ובכן, SYSTEM היא מילת מפתח שמבשרת למנתח הXML שהסוג של הentity הוא External.</center></p>
 <p><center>במילים פשוטות, פשוט אומר למנתח ה-XML להביא את המשאב החיצוני ולאחסן אותו בתוך הentity.</center></p><br>
 <p><center>בחזרה לדוגמא,הערך של test הוא אינו "secret.txt", אלא התוכן שבתוך הקובץ שנקרא </center></p>
 <p><center>secret.txt מאוחסן על ידי המשתנה test, ובכן, secret.txt זה רק שם הקובץ שממנו אתם רוצים לקרוא.</center></p>
 <p><center>שם הקובץ ממנו אתם רוצים לקרוא אינו חייב להיות מצויין כך, XML תומך בפרוטוקולים מגוונים כמו ftp,http וכו', שרק מגדיל את מרחב התקיפה.</center></p>
 <center><img src="https://m4dness.github.io/images/xxe5.png" width="500"></center><br>
-<h3 style="color: rgb(209, 11, 77);"><center><u>קיימים 3 סוגי מתקפות XXE:</u></center></style></h3>
+<h3 style="color: rgb(82, 26, 60);"><center><u>קיימים 3 סוגי מתקפות XXE:</u></center></style></h3>
 <p><center>InBand - כמו בדוגמא מעלה, ברגע שמנתח הXML יעבור עליו, המידע יימשך מתוך הקובץ והפלט יישפך לנו על המסך.</center></p>
 <p><center>Error - סוג של Blind XXE , אין פלט חוץ מכמות של שגיאות שקופצות לכם מול הפרצוף.</center></p>
 <p><center> OutOfBand - מדובר במתקפת BLIND XXE לחלוטין, ששום פלט לא קופץ ואתם צריכים למצוא דרך להגיע אל המידע אותו אתם רוצים למשוך.</center></p><br>
